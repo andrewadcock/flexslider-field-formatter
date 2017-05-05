@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * Gallery Featurette.
+ */
+#}
+{% set field_name_class = field_name|clean_class %}
+{%
+set classes = [
+'field',
+'field-' ~ entity_type|clean_class ~ '--' ~ field_name_class,
+'field-name-' ~ field_name_class,
+'field-type-' ~ field_type|clean_class,
+'field-label-' ~ label_display,
+label_display == 'inline' ? 'clearfix',
+]
+%}
+{%
+set title_classes = [
+'field-label',
+label_display == 'visually_hidden' ? 'visually-hidden',
+]
+%}
+
+{{ kint(items|keys) }}
+
+<div{{ attributes.addClass(classes, 'flexslider-slider') }}>
+    {% if not label_hidden %}
+        <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+    {% endif %}
+    <ul{{ content_attributes.addClass('field-items', 'slides') }}>
+        {% for item in items %}
+            <li{{ item.attributes.addClass('field-item') }}>{{ item.content }} {{ loop.index }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% if showCarousel %}
+
+    <div{{ attributes.addClass(classes, 'flexslider-thumbnails') }}>
+        {% if not label_hidden %}
+            <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+        {% endif %}
+        <ul{{ content_attributes.addClass('field-items', 'slides') }}>
+            {% for item in items %}
+                <li{{ item.attributes.addClass('field-item') }}>{{ item.content }} {{ loop.index }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endif %}

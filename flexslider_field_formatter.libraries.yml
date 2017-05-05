@@ -1,0 +1,10 @@
+flexslider:
+  version: 2.6.3
+  css:
+    base:
+      libraries/css/flexslider.css: {}
+  js:
+    libraries/js/jquery.flexslider-min.js: {}
+    libraries/js/gallery.js: {}
+  dependencies:
+      - core/jquery
