@@ -1,4 +1,4 @@
-# flexslider-field-formatter
+# FlexSlider Field Formatter
 FlexSlider Field Formatter module provides a formatter for media entity reference fields that ouputs media entities along with associated FlexSlider JS and CSS files.
 
 Options for adding a synced carousel for thumbnails and thumbnail widths are available
