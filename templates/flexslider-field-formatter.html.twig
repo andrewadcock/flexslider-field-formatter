@@ -27,8 +27,8 @@ label_display == 'visually_hidden' ? 'visually-hidden',
         <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
     {% endif %}
     <ul{{ content_attributes.addClass('field-items', 'slides') }}>
-        {% for fleximage in fleximages %}
-            <li{{ item.attributes.addClass('field-item') }}>{{ fleximage }}</li>
+        {% for item in items %}
+            <li{{ item.attributes.addClass('field-item') }}>{{ item }}</li>
         {% endfor %}
     </ul>
 </div>
@@ -39,8 +39,8 @@ label_display == 'visually_hidden' ? 'visually-hidden',
             <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
         {% endif %}
         <ul{{ content_attributes.addClass('field-items', 'slides') }}>
-            {% for fleximage in fleximages %}
-                <li{{ item.attributes.addClass('field-item') }}>{{ fleximage }}</li>
+            {% for item in items %}
+                <li{{ item.attributes.addClass('field-item') }}>{{ item }}</li>
             {% endfor %}
         </ul>
     </div>
