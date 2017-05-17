@@ -80,6 +80,9 @@ class FlexSliderEntityFieldFormatter extends EntityReferenceEntityFormatter {
     return $elements;
   }
 
+  /**
+   * Create render array for image.
+   */
   public function viewElement($item) {
     $itemValue = $item->getValue();
     $target_id = $itemValue['target_id'];
