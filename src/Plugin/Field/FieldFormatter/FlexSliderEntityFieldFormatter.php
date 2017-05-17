@@ -65,7 +65,7 @@ class FlexSliderEntityFieldFormatter extends EntityReferenceEntityFormatter {
     $elements['#attached']['drupalSettings']['flexslider_field_formatter']['0']['itemWidth'] = $this->getSetting(
       'item_width'
     );
-    $elements['#attached']['drupalSettings']['flexslider_field_formatter']['0']['showCarousel'] = $this->getSetting(
+    $elements['#attached']['drupalSettings']['flexslider_field_formatter']['0']['show_carousel'] = $this->getSetting(
       'show_carousel'
     );
 
@@ -74,4 +74,5 @@ class FlexSliderEntityFieldFormatter extends EntityReferenceEntityFormatter {
 
     return $elements;
   }
+
 }

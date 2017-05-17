@@ -13,7 +13,7 @@
 
             $(context).find('.flexslider-thumbnails').each(function () {
 
-                if(true == settings.flexslider_field_formatter['0'].showCarousel) {
+                if(true == settings.flexslider_field_formatter['0'].show_carousel) {
                     $(window).load(function () {
                         $('.flexslider-thumbnails').flexslider({
                             animation: "slide",
@@ -30,7 +30,7 @@
 
             $(context).find('.flexslider-slider').each(function () {
 
-                if(true == settings.flexslider_field_formatter['0'].showCarousel) {
+                if(true == settings.flexslider_field_formatter['0'].show_carousel) {
                     $(window).load(function () {
                         $('.flexslider-slider').flexslider({
                             animation: "slide",
@@ -46,7 +46,7 @@
                             animation: "slide",
                             controlNav: true,
                             animationLoop: true,
-                            slideshow: false,
+                            slideshow: false
                         });
                     });
                 }
