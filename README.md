@@ -9,4 +9,4 @@ Options for adding a synced carousel for thumbnails and thumbnail widths are ava
 
 
 ## ToDo's
-1. Output of items currently not working. Expected result is a rendered node. Current result is an array of target_ids
+1. Create SettingsForm for image output size --OR-- instruct user to create specific Image style
