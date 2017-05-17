@@ -34,7 +34,6 @@ function flexslider_field_formatter_theme($existing, $type, $theme, $path) {
         'show_carousel' => NULL,
         'items' => NULL,
       ],
-      'file' => 'flexslider_field_formatter.theme.inc',
     ],
   ];
 }

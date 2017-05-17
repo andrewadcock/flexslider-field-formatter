@@ -8,6 +8,7 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Field\Plugin\Field\FieldFormatter\EntityReferenceEntityFormatter;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
 
 /**
  * Plugin implementation of the 'flexslider_field_formatter' formatter.
@@ -72,7 +73,48 @@ class FlexSliderEntityFieldFormatter extends EntityReferenceEntityFormatter {
     $elements['#show_carousel'] = $this->getSetting('show_carousel');
     $elements['#theme'] = 'flexslider_field_formatter';
 
+    foreach ($items as $delta => $item) {
+      $elements['#items'][$delta] = $this->viewElement($item);
+    }
+
     return $elements;
+  }
+
+  public function viewElement($item) {
+    $itemValue = $item->getValue();
+    $target_id = $itemValue['target_id'];
+
+    $file = File::load($target_id);
+
+    $imageSettings = [
+      'style_name' => 'original',
+      'uri' => $file->getFileUri(),
+    ];
+
+    // Use image.factory to retrieve image information.
+    $image = \Drupal::service('image.factory')->get($file->getFileUri());
+    if ($image->isValid()) {
+      $imageSettings['width'] = $image->getWidth();
+      $imageSettings['height'] = $image->getHeight();
+    }
+    else {
+      $imageSettings['width'] = $imageSettings['height'] = NULL;
+    }
+
+    $imageRenderArray = [
+      '#theme' => 'image_style',
+      '#width' => $imageSettings['width'],
+      '#height' => $imageSettings['height'],
+      '#style_name' => $imageSettings['style_name'],
+      '#uri' => $imageSettings['uri'],
+    ];
+
+    // Add the file entity to the cache dependencies.
+    // This will clear our cache when this entity updates.
+    $renderer = \Drupal::service('renderer');
+    $renderer->addCacheableDependency($imageRenderArray, $file);
+
+    return $imageRenderArray;
   }
 
 }
